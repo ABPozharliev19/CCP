@@ -101,6 +101,8 @@ def registerCompanyPage2(companyName,translatedName,sAdress):
     seatAdress = driver.find_element_by_id("application_fields.seat.address.settlement")
     seatAdress.send_keys(sAdress)
     
+    stuff
+    
     
     
     
