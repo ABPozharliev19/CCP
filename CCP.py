@@ -8,7 +8,7 @@ import time
 PATH=r"C:\Users\nnask\AppData\Local\Programs\Python\Python38\Stuff\chromedriver.exe"
 driver=webdriver.Chrome(PATH)
 
-emailforLogIn="informationtechtest123@gmail.com"
+emailForLogIn="informationtechtest123@gmail.com"
 passwordForLogIn="passwordxd123"
 
 Name="Георги Стоянов Димитров"
@@ -26,10 +26,9 @@ street_live="Гладстон"
 
 companyName = "Кон"
 translatedCompanyName = "Kon"
-sAdress = "Бургас"
-
-
-
+sAddress = "Бургас"
+seatAddressPostCode = "8000"
+seatAddressHousingEstate = "Въздраждане"
 
 def logIn(email,password):
     driver.get("https://login.registryagency.bg/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_mode%3Dform_post%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fportal.registryagency.bg%252Flogin%26client_id%3Depzeu.ui.client%26nonce%3Db8e326aa4724a3019dedce167e854726%26state%3D671b6e62ceb9f322da7d3fc31ccf58e4%26scope%3Dopenid%2520profile%2520epzeu.api%2520offline_access")
@@ -86,34 +85,48 @@ def registerCompanyPage1(Name,EGN,birthPlace,cityOfBirth,countryOfLife,cityOfLif
     streetOfLifeForm = driver.find_element_by_id("application_applicants.applicantsList.[0].address.street")
     streetOfLifeForm.send_keys(streetOfLife)
     
-    '''inputButton = driver.find_elements_by_xpath("//*[@type=radio] and [@value=type").click()'''
+    #inputButton = driver.find_elements_by_xpath("//*[@type=radio] and [@value=type").click()
     
     time.sleep(2)
     
     
-def registerCompanyPage2(companyName,translatedName,sAdress):
+def registerCompanyPage2(companyName,translatedName,sAddress,sAPostCode,sAddressHE):
     nameOfCompanyForm = driver.find_element_by_id("application_fields.company.text")
     nameOfCompanyForm.send_keys(companyName)
     
     translatedCompanyNameForm = driver.find_element_by_id("application_fields.transliteration.text")
     translatedCompanyNameForm.send_keys(translatedName)
     
-    seatAdress = driver.find_element_by_id("application_fields.seat.address.settlement")
-    seatAdress.send_keys(sAdress)
+    seatAddress = driver.find_element_by_id("application_fields.seat.address.settlement")
+    seatAddress.send_keys(sAddress)
     
-    stuff
+    time.sleep(5)
+
+    #try:
+     #   Form = WebDriverWait(driver,20).until(EC.presence_of_element_located((By.XPATH, "//*[@id=dab15b44-7611-4fe3-9bfc-0f133af26ff6]/div[1]/div[2]/div[1]/div")))
+
     
-    
-    
+    #//*[@id="dab15b44-7611-4fe3-9bfc-0f133af26ff6"]/div[1]/div[2]/div[1]/div
+
+    seatPostCodeForm = driver.find_element_by_id("application_fields.seat.address.postCode")
+    seatPostCodeForm.send_keys(sAPostCode)
+
+    seatAddressHousingEstateForm = driver.find_element_by_id("application_fields.seat.address.housingEstate")
+    seatAddressHousingEstateForm.send_keys(sAddressHE)
+
+
+
     
 
-logIn(emailforLogIn,passwordForLogIn)
+logIn(emailForLogIn,passwordForLogIn)
 
 registerCompanyPage1(Name,EGN,placeOfBirth,cityOfBirth,country_live,city_live,region_live,neighborhood_live,street_live,postCode)
 
-buttonForNextPageForm=driver.find_element_by_xpath("//button[text()='Продължи']").click()
+buttonForNextPageForm = driver.find_element_by_xpath("//button[text()='Продължи']").click()
 
-registerCompanyPage2(companyName,translatedCompanyName,sAdress)
+time.sleep(5)
+
+registerCompanyPage2(companyName, translatedCompanyName, sAddress,seatAddressPostCode,seatAddressHousingEstate)
 
 
     
