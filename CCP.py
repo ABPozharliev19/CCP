@@ -5,30 +5,34 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 
-PATH=r"C:\Users\nnask\AppData\Local\Programs\Python\Python38\Stuff\chromedriver.exe"
-driver=webdriver.Chrome(PATH)
+PATH = r"C:\Users\nnask\AppData\Local\Programs\Python\Python38\Stuff\chromedriver.exe"
+driver = webdriver.Chrome(PATH)
 
-emailForLogIn="informationtechtest123@gmail.com"
-passwordForLogIn="passwordxd123"
+emailForLogIn = "informationtechtest123@gmail.com"
+passwordForLogIn = "passwordxd123"
 
-Name="Георги Стоянов Димитров"
-EGN="0348011188"
+Name = "Георги Стоянов Димитров"
+EGN = "0348011188"
 
-placeOfBirth="България"
-cityOfBirth="Бургас"
+placeOfBirth = "България"
+cityOfBirth = "Бургас"
 
-postCode="8000"
-country_live="България"
-city_live="Бургас"
-region_live="Бургас"
-neighborhood_live="Славейков"
-street_live="Гладстон"
+postCode = "8000"
+country_live = "България"
+city_live = "Бургас"
+region_live = "Бургас"
+neighborhood_live = "Славейков"
+street_live = "Гладстон"
 
 companyName = "Кон"
 translatedCompanyName = "Kon"
 sAddress = "Бургас"
 seatAddressPostCode = "8000"
 seatAddressHousingEstate = "Въздраждане"
+seatAddressStreat = "Гладстон"
+
+
+
 
 def logIn(email,password):
     driver.get("https://login.registryagency.bg/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_mode%3Dform_post%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fportal.registryagency.bg%252Flogin%26client_id%3Depzeu.ui.client%26nonce%3Db8e326aa4724a3019dedce167e854726%26state%3D671b6e62ceb9f322da7d3fc31ccf58e4%26scope%3Dopenid%2520profile%2520epzeu.api%2520offline_access")
@@ -90,7 +94,7 @@ def registerCompanyPage1(Name,EGN,birthPlace,cityOfBirth,countryOfLife,cityOfLif
     time.sleep(2)
     
     
-def registerCompanyPage2(companyName,translatedName,sAddress,sAPostCode,sAddressHE):
+def registerCompanyPage2(companyName,translatedName,sAddress,sAPostCode,sAddressHE,sAddressStreat ):
     nameOfCompanyForm = driver.find_element_by_id("application_fields.company.text")
     nameOfCompanyForm.send_keys(companyName)
     
@@ -114,6 +118,11 @@ def registerCompanyPage2(companyName,translatedName,sAddress,sAPostCode,sAddress
     seatAddressHousingEstateForm = driver.find_element_by_id("application_fields.seat.address.housingEstate")
     seatAddressHousingEstateForm.send_keys(sAddressHE)
 
+    seatAddressStreatForm =  driver.find_element_by_id("application_fields.seat.address.street")
+    seatAddressStreatForm.send_keys(seatAddressStreat)
+
+    #application_fields.seat.contacts.phone
+
 
 
     
@@ -126,7 +135,7 @@ buttonForNextPageForm = driver.find_element_by_xpath("//button[text()='Прод�
 
 time.sleep(5)
 
-registerCompanyPage2(companyName, translatedCompanyName, sAddress,seatAddressPostCode,seatAddressHousingEstate)
+registerCompanyPage2(companyName, translatedCompanyName, sAddress,seatAddressPostCode,seatAddressHousingEstate,seatAddressStreat)
 
 
     
