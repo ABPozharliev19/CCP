@@ -4,12 +4,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
+import tokens
 
-PATH = r"C:\Users\nnask\AppData\Local\Programs\Python\Python38\Stuff\chromedriver.exe"
-driver = webdriver.Chrome(PATH)
+driver = webdriver.Chrome(tokens.PATH)
 
-emailForLogIn = "informationtechtest123@gmail.com"
-passwordForLogIn = "passwordxd123"
+emailForLogIn = tokens.email
+passwordForLogIn = tokens.password
+
 
 Name = "Георги Стоянов Димитров"
 EGN = "0348011188"
