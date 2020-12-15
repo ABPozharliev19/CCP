@@ -137,7 +137,7 @@ buttonForNextPageForm = driver.find_element_by_xpath("//button[text()='Прод�
 time.sleep(5)
 
 registerCompanyPage2(companyName, translatedCompanyName, sAddress,seatAddressPostCode,seatAddressHousingEstate,seatAddressStreat)
-
+t
 
     
 
