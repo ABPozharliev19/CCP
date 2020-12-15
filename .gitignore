@@ -1,4 +1,8 @@
-tokens.py
-/__pycache__/*
-/.idea/*
-/.vscode/*
+# Our passwords and API keys
+.tokens
+# Folder made for tokens.py
+__pycache__/
+# Folder made by PyCharm
+.idea/
+# Folder made by Vs Code
+.vscode/
