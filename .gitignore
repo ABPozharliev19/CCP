@@ -1,5 +1,5 @@
 # Our passwords and API keys
-.tokens
+tokens.py
 # Folder made for tokens.py
 __pycache__/
 # Folder made by PyCharm
