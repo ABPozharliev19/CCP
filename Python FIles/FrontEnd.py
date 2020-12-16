@@ -22,16 +22,21 @@ password_login = password[1]
 
 login_check = check(email_login, password_login)
 
-print(login_check)
-
 while True:
+    login_check = check(email_login, password_login)
+
     if login_check == "https://portal.registryagency.bg/":
         sg.popup('Successful login!')
         break
 
     else:
+        login_check = check(email_login, password_login)
         sg.popup('Try again!')
-        logInWindow.read()
+        username, password = logInWindow.read()
+        email_login = password[0]
+        password_login = password[1]
 
 
+logInWindow.close()
 main()
+
