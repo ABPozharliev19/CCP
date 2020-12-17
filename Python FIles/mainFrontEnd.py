@@ -6,9 +6,13 @@ def main():
     layout = [
         [sg.Text('Въведете трите си имена ')],
         [sg.Input()],
-        [sg.Text('Въведете ЕГН-то си ')],
+        [sg.Text('Въведете вашето ЕГН ')],
         [sg.Input()],
     ]
-    first_window = sg.Window('Начален прозорец', layout)
+    first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12")
 
     first_window.read()
+
+
+
+main()
