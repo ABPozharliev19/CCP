@@ -14,5 +14,3 @@ def main():
     first_window.read()
 
 
-
-main()

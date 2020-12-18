@@ -34,6 +34,9 @@ seatAddressPostCode = "8000"
 seatAddressHousingEstate = "Въздраждане"
 seatAddressStreat = "Гладстон"
 
+contact_phone = "0894448698"
+eMail = "informationtechtest123@gmail.com"
+
 
 def logIn(email, password):  # First function to Log in
     driver.get(
@@ -42,8 +45,8 @@ def logIn(email, password):  # First function to Log in
         "%26client_id%3Depzeu.ui.client%26nonce%3Db8e326aa4724a3019dedce167e854726%26state"
         "%3D671b6e62ceb9f322da7d3fc31ccf58e4%26scope%3Dopenid%2520profile%2520epzeu.api%2520offline_access")
 
-    emailLog = driver.find_element_by_id("Username") # Search for the Username input
-    passwordLog = driver.find_element_by_id("Password") # Search for the Password input
+    emailLog = driver.find_element_by_id("Username")  # Search for the Username input
+    passwordLog = driver.find_element_by_id("Password")  # Search for the Password input
 
     # Send the login information
     emailLog.send_keys(email)
@@ -54,7 +57,7 @@ def logIn(email, password):  # First function to Log in
     # Function to fill all the information in the first page
 
 
-def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, cityOfLife, regionOfLife, nbHoodOfLife,streetOfLife, postCode):
+def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, cityOfLife, nbHoodOfLife,streetOfLife, postCode):
 
     driver.get("https://portal.registryagency.bg/CR/applications/ApplicationProcesses/A4")  # Go to the web page
     time.sleep(5)  # Wait for the page to load
@@ -68,21 +71,26 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
 
     # Search for the
     nameForm = driver.find_element_by_id("application_applicants.applicantsList.[0].person.name")
+    nameForm.clear()
     nameForm.send_keys(Name)
 
     EGNForm = driver.find_element_by_id("application_applicants.applicantsList.[0].person.indent")
+    EGNForm.clear()
     EGNForm.send_keys(EGN)
 
     birthPlaceForm = driver.find_element_by_id("application_applicants.applicantsList.[0].birthPlace.country")
+    birthPlaceForm.clear()
     birthPlaceForm.send_keys(birthPlace)
 
     cityOfBirthForm = driver.find_element_by_id("application_applicants.applicantsList.[0].birthPlace.place")
+    cityOfBirthForm.clear()
     cityOfBirthForm.send_keys(cityOfBirth)
 
     countryOfLifeForm = driver.find_element_by_id("application_applicants.applicantsList.[0].address.country")
     countryOfLifeForm.click()
     countryOfLifeForm.clear()
     countryOfLifeForm.send_keys(countryOfLife)
+    countryOfLifeForm.click()
 
     Form = WebDriverWait(driver, 20).until(EC.presence_of_element_located(
         (By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div[1]/div[4]/div[2]/div/span/ul/li")))
@@ -97,12 +105,15 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
     FormTemp.click()
 
     postCodeForm = driver.find_element_by_id("application_applicants.applicantsList.[0].address.postCode")
+    postCodeForm.clear()
     postCodeForm.send_keys(postCode)
 
     nbHoodOfLifeForm = driver.find_element_by_id("application_applicants.applicantsList.[0].address.housingEstate")
+    nbHoodOfLifeForm.clear()
     nbHoodOfLifeForm.send_keys(nbHoodOfLife)
 
     streetOfLifeForm = driver.find_element_by_id("application_applicants.applicantsList.[0].address.street")
+    streetOfLifeForm.clear()
     streetOfLifeForm.send_keys(streetOfLife)
 
     driver.execute_script("window.scrollTo(0, 1000)")
@@ -110,42 +121,55 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
     inputButton = driver.find_element_by_xpath("//html/body/div[1]/div[2]/div[2]/div[3]/div/div[3]/div[2]/div/div[1]/label")
     inputButton.click()
 
-    time.sleep(100)
 
-
-def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAddressHE, sAddressStreat):
+def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAddressHE, sAddressStreat, contactPhone,email):
     nameOfCompanyForm = driver.find_element_by_id("application_fields.company.text")
+    nameOfCompanyForm.clear()
     nameOfCompanyForm.send_keys(companyName)
 
     translatedCompanyNameForm = driver.find_element_by_id("application_fields.transliteration.text")
+    translatedCompanyNameForm.clear()
     translatedCompanyNameForm.send_keys(translatedName)
 
-    seatAddress = driver.find_element_by_id("application_fields.seat.address.settlement")
-    seatAddress.send_keys(sAddress)
+    seatAddressForm = driver.find_element_by_id("application_fields.seat.address.settlement")
+    seatAddressForm.click()
+    seatAddressForm.clear()
+    seatAddressForm.send_keys(sAddress)
+    seatAddressForm.click()
 
-    time.sleep(5)
-
-    # TODO Automate it like Page 1
-
-    ''' try:
-       Form = WebDriverWait(driver,20).until(EC.presence_of_element_located((By.XPATH, "//*[@id=dab15b44-7611-4fe3-9bfc-0f133af26ff6]/div[1]/div[2]/div[1]/div"))) '''
+    Form = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[4]/div[2]/div[1]/div[2]/div[1]/span/ul/li")))
+    Form.click()
 
     seatPostCodeForm = driver.find_element_by_id("application_fields.seat.address.postCode")
+    seatPostCodeForm.clear()
     seatPostCodeForm.send_keys(sAPostCode)
 
     seatAddressHousingEstateForm = driver.find_element_by_id("application_fields.seat.address.housingEstate")
+    seatAddressHousingEstateForm.clear()
     seatAddressHousingEstateForm.send_keys(sAddressHE)
 
     seatAddressStreatForm = driver.find_element_by_id("application_fields.seat.address.street")
-    seatAddressStreatForm.send_keys(seatAddressStreat)
+    seatAddressStreatForm.clear()
+    seatAddressStreatForm.send_keys(sAddressStreat)
+
+    contactPhoneForm = driver.find_element_by_id("application_fields.seat.contacts.phone")
+    contactPhoneForm.clear()
+    contactPhoneForm.send_keys(contactPhone)
+
+    emailForCompanyForm = driver.find_element_by_id("application_fields.seat.contacts.eMail")
+    emailForCompanyForm.clear()
+    emailForCompanyForm.send_keys(email)
+
+    time.sleep(100)
+
 
 # TODO Do the rest of the Automation
 logIn(emailForLogIn, passwordForLogIn)
 
-registerCompanyPage1(Name, EGN, placeOfBirth, cityOfBirth, country_live, city_live, region_live, neighborhood_live, street_live, postCode)
+registerCompanyPage1(Name, EGN, placeOfBirth, cityOfBirth, country_live, city_live, neighborhood_live, street_live, postCode)
 
 buttonForNextPageForm = driver.find_element_by_xpath("//button[text()='Продължи']").click()
 
 time.sleep(5)
 
-registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate,seatAddressStreat)
+registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreat, contact_phone,eMail)
