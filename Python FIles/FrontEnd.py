@@ -1,5 +1,5 @@
 from logInCheck import *
-# from CCP import *
+# from BackEnd import *
 from mainFrontEnd import *
 
 sg.popup('Welcome to CCP', custom_text = 'Next')
