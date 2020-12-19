@@ -54,9 +54,8 @@ def logIn(email, password):  # First function to Log in
     # Press enter for the login to be done
     passwordLog.send_keys(Keys.ENTER)
 
+
     # Function to fill all the information in the first page
-
-
 def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, cityOfLife, nbHoodOfLife,streetOfLife, postCode):
 
     driver.get("https://portal.registryagency.bg/CR/applications/ApplicationProcesses/A4")  # Go to the web page
