@@ -1,3 +1,3 @@
 <p align = "center">
-<img src = "https://i.imgur.com/LXagj8g.png" alt="CCP Logo">
+<img src = "Logo.png" alt="CCP Logo">
 </p>
