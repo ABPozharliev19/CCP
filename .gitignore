@@ -6,3 +6,5 @@ __pycache__/
 .idea/
 # Folder made by Vs Code
 .vscode/
+#Everything in Word Files folder
+Word Files/*
