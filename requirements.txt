@@ -1,2 +1,3 @@
-selenium
-pysimplegui
+selenium~=3.141.0
+pysimplegui~=4.32.1
+python-docx
