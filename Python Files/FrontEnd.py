@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from logInCheck import *
 # from BackEnd import *
-from mainFrontEnd import *
+from nameAndEGN import *
 
 sg.popup('Welcome to CCP', custom_text = 'Next')
 

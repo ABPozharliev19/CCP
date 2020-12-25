@@ -1,6 +1,4 @@
 import PySimpleGUI as sg
-import tokens
-
 
 def main():
     layout = [
@@ -11,6 +9,6 @@ def main():
     ]
     first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12")
 
-    first_window.read()
+    Name, SSN = first_window.read()
 
 

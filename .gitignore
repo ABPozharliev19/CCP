@@ -8,3 +8,5 @@ __pycache__/
 .vscode/
 #Everything in Word Files folder
 Word Files/*
+#all debug log files
+*.log
