@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from logInCheck import *
 # from BackEnd import *
-from nameAndEGN import *
+import nameAndEGN as firstPage
 
 sg.popup('Welcome to CCP', custom_text = 'Next')
 
@@ -39,5 +39,6 @@ while True:
 
 
 logInWindow.close()
-main()
+
+firstPage.main()
 
