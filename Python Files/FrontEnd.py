@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 from logInCheck import *
-# from BackEnd import *
 import nameAndEGN as firstPage
 
-sg.popup('Welcome to CCP', custom_text = 'Next')
+
+sg.popup('Welcome to CCP', custom_text='Next')
 
 login_window = [
     [sg.Text('Enter your email or username')],
@@ -12,7 +12,7 @@ login_window = [
     [sg.Input()],
     [sg.Button('Log In')]
 
-]
+    ]
 
 logInWindow = sg.Window('Log In', login_window)
 
@@ -28,6 +28,7 @@ while True:
 
     if login_check == "https://portal.registryagency.bg/":
         sg.popup('Successful login!')
+
         break
 
     else:
@@ -37,8 +38,8 @@ while True:
         email_login = password[0]
         password_login = password[1]
 
-
 logInWindow.close()
 
 firstPage.main()
+
 

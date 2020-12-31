@@ -12,8 +12,11 @@ def main():
     first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12")
 
     temp, name_and_egn = first_window.read()
+
     print(name_and_egn)
     secondPage.main()
 
 
-main()
+if __name__ == "__main__":
+    main()
+
