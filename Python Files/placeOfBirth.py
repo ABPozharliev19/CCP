@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import placeOfLife as thirdPage
 import nameAndEGN as firstPage
 
+
 def main():
     layout = [
         [sg.Text('Въведетe държавата на раждане')],
@@ -25,6 +26,8 @@ def main():
     else:
         second_window.close()
         thirdPage.main()
+
+        # nice
 
 
 if __name__ == "__main__":
