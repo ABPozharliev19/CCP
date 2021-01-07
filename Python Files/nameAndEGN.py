@@ -13,8 +13,13 @@ def main():
 
     temp, name_and_egn = first_window.read()
 
-    print(name_and_egn)
-    secondPage.main()
+    if temp != 'Напред':
+        first_window.close()
+        print(temp, name_and_egn)
+
+    else:
+        first_window.close()
+        secondPage.main()
 
 
 if __name__ == "__main__":
