@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import placeOfBirth as secondPage
 
+
 def main():
     layout = [
         [sg.Text('Въведете трите си имена ', justification='center')],
