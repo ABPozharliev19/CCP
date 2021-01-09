@@ -16,7 +16,7 @@ login_window = [
 ############# End of design ###############################
 
 # Define the window
-logInWindow = sg.Window('Log In', login_window, font="Helvetica 12")
+logInWindow = sg.Window('Log In', login_window, font="Helvetica 12",)
 
 # Show the application and read the information in it
 username, password = logInWindow.read()

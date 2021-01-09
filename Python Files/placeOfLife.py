@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-
+import applicantQuality as fourthPage
 import placeOfBirth as secondPage
 
 
@@ -38,7 +38,7 @@ def main():
     # The button "Напред" is pressed
     else:
         thirdWindow.close()
-        sg.Popup('Start of the Company Section')
+        fourthPage.main()
 
 
 if __name__ == "__main__":
