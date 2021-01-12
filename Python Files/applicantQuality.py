@@ -4,7 +4,7 @@ import placeOfLife as thirdPage
 
 def main():
     layout = [
-        [sg.Text('Качество на заявителя',size=(45, 1), justification='center')],
+        [sg.Text('Качество на заявителя', size=(45, 1), justification='center')],
         [sg.Radio('Търговец/лице, представляващо ЮЛНЦ', "RADIO1", default=True)],
         [sg.Radio('Адвокат с изрично пълномощно', "RADIO1")],
         [sg.Radio('Прокурист', "RADIO1")],
@@ -12,7 +12,7 @@ def main():
         [sg.Button('Назад', pad=(100, 0)), sg.Button('Напред')]
     ]
 
-    fourthWindow = sg.Window('Качество на заявителя ', layout, font="Helvetica 12")
+    fourthWindow = sg.Window('Качество на заявителя ', layout, font="Helvetica 12", icon="../Logo.ico")
 
     temp, applicant_quality = fourthWindow.read()
 

@@ -20,7 +20,7 @@ def main():
     #### WINDOW LAYOUT ENDS HERE ####
 
     # Define the window
-    thirdWindow = sg.Window('Постоянен адрес', layout, font="Helvetica 12", element_justification='center')
+    thirdWindow = sg.Window('Постоянен адрес', layout, font="Helvetica 12", element_justification='center', icon="../Logo.ico")
 
     # Make the window show and read every information in it
     temp, place_of_life = thirdWindow.read()

@@ -24,3 +24,5 @@ def check(email, password):
 
     return driver.current_url
 
+
+

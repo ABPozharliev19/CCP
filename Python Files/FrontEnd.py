@@ -1,9 +1,8 @@
 import PySimpleGUI as sg
 from logInCheck import *
 import nameAndEGN as firstPage
+import welcome as startPage
 
-# A popup window to indicate the start of the program
-sg.popup('Welcome to CCP', custom_text='Next', font="Helvetica 12")
 
 ########## Define and design window layout ###########
 login_window = [
@@ -16,7 +15,7 @@ login_window = [
 ############# End of design ###############################
 
 # Define the window
-logInWindow = sg.Window('Log In', login_window, font="Helvetica 12",)
+logInWindow = sg.Window('Log In', login_window, font="Helvetica 12", icon="../Logo.ico")
 
 # Show the application and read the information in it
 username, password = logInWindow.read()

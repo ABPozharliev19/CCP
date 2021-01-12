@@ -15,7 +15,7 @@ def main():
     ######################################################
 
     # Define the window
-    second_window = sg.Window('Начален прозорец', layout, font = "Helvetica 12")
+    second_window = sg.Window('Начален прозорец', layout, font = "Helvetica 12", icon="../Logo.ico")
 
     # Makes the window show and stores every information in it in variables
     temp, place_of_birth = second_window.read()

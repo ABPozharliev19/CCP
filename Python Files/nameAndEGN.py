@@ -10,7 +10,7 @@ def main():
         [sg.Input()],
         [sg.Button('Напред')]
     ]
-    first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12")
+    first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12", icon="../Logo.ico")
 
     temp, name_and_egn = first_window.read()
 
