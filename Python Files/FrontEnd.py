@@ -1,11 +1,8 @@
 import PySimpleGUI as sg
 from logInCheck import *
 import nameAndEGN as firstPage
-import welcome as startPage
-
 
 ########## Define and design window layout ###########
-
 login_window = [
     [sg.Text('Enter your email or username')],
     [sg.Input()],
