@@ -5,11 +5,12 @@ import welcome as startPage
 
 
 ########## Define and design window layout ###########
+
 login_window = [
     [sg.Text('Enter your email or username')],
     [sg.Input()],
     [sg.Text('Enter your password')],
-    [sg.Input()],
+    [sg.Input(password_char="●")],
     [sg.Button('Log In')]
     ]
 ############# End of design ###############################
