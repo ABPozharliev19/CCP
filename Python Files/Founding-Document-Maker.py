@@ -1,6 +1,6 @@
 from docx import Document
-from BackEnd import *
-from FrontEnd import *
+from backend import *
+from front_end import *
 
 doc = Document()
 

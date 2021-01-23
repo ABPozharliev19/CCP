@@ -1,3 +1,4 @@
 selenium~=3.141.0
 pysimplegui~=4.33.0
 python-docx
+cryptography~=3.3.1
