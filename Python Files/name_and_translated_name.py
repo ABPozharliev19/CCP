@@ -6,7 +6,8 @@ def main():
         [sg.Text("Фирма / Наименование")],
         [sg.Input()],
         [sg.Text("Изписване на чужд език")],
-        [sg.Input()]
+        [sg.Input()],
+        [sg.Button('Напред')]
 
     ]
 
