@@ -1,9 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
 
 option = webdriver.ChromeOptions()
 option.add_argument('headless')
+
 
 try:
     driver = webdriver.Chrome("../chromedriver1.exe", options=option)
@@ -27,7 +27,7 @@ def check(email, password):
 
     emailLog.send_keys(email)
     passwordLog.send_keys(password)
-    time.sleep(1)
+    passwordLog.send_keys(Keys.ENTER)
 
     return driver.current_url
 

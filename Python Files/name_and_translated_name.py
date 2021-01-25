@@ -10,7 +10,7 @@ def main():
 
     ]
 
-    window = sg.Window("Наименование на фирмата", layout, font = "Helvetica 12")
+    window = sg.Window("Наименование на фирмата", layout, font="Helvetica 12")
     event, values = window.read()
 
 
