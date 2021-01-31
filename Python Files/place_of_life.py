@@ -10,6 +10,8 @@ def main():
         [sg.Input(size=(22, 1))],
         [sg.Text('Населено място', pad=(44, 0)), sg.Text('Пощенски код', pad=(46, 0))],
         [sg.Input(size=(21, 1)), sg.Input(size=(21, 1))],
+        [sg.Text('Ж.к.')],
+        [sg.Input()],
         [sg.Text('Бул / ул.')],
         [sg.Input()],
         [sg.Text('№', pad=(30, 1)), sg.Text('Бл.', pad=(30, 1)), sg.Text('Вх.', pad=(30, 1)),
