@@ -6,12 +6,12 @@ option = webdriver.ChromeOptions()
 option.add_argument('headless')
 
 try:
-    driver = webdriver.Chrome("../chromedriver1.exe", options=option)
-
-except Exception:
     driver = webdriver.Chrome("../chromedriver.exe", options=option)
 
-finally:
+except Exception:
+    driver = webdriver.Chrome("../chromedriver1.exe", options=option)
+
+except:
     driver = webdriver.Chrome("../chromedriver2.exe", options=option)
 
 
@@ -31,6 +31,9 @@ def check(email, password):
 
     return driver.current_url
 
+
+if __name__ == "__main__":
+    pass
 
 
 
