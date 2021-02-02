@@ -20,5 +20,5 @@ def main():
     window = sg.Window('Информация за компанията', layout, font="Helvetica 12", icon="../Logo.ico", element_justification="center")
     event, values = window.read()
 
-
-main()
+if __name__ == "__main__":
+    main()

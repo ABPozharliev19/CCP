@@ -1,4 +1,6 @@
 import PySimpleGUI as sg
+import company_info as nextWindow
+
 
 
 def main():
@@ -13,6 +15,14 @@ def main():
 
     window = sg.Window("Наименование на фирмата", layout, font="Helvetica 12")
     event, values = window.read()
+
+    if event is None:
+        window.close()
+
+    elif event == "Напред":
+        window.close()
+        nextWindow.main()
+
 
 
 if __name__ == "__main__":

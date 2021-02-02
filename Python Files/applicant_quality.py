@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import place_of_life as thirdPage
+import name_and_translated_name as nextWindow
 
 
 def main():
@@ -29,8 +30,8 @@ def main():
     # The button "Напред" is pressed
     else:
         fourthWindow.close()
-        sg.Popup('OK')
-        print(temp, applicant_quality)
+        nextWindow.main()
+        
 
 
 if __name__ == "__main__":
