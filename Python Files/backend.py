@@ -42,6 +42,19 @@ seatAddressStreet = "Гладстон"
 
 contact_phone = "0894448698"
 eMail = "informationtechtest123@gmail.com"
+page = "codingburgas.bg"
+
+correspondenceAddress = "Бургас"
+correspondencePostCode = "8000"
+correspondenceHousingEstate = "Славейков"
+correspondenceAddressStreet = "Гладстон"
+correspondence_number_street = 1
+correspondence_block_address = 2
+correspondence_entrance_address = 3
+correspondence_floor_address = 4
+correspondence_apartment_address = 5
+
+
 
 
 def logIn(email, password):  # First function to Log in
@@ -148,7 +161,7 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
     inputButton.click()
 
 
-def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAddressHE, sAddressStreat, contactPhone,email):
+def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAddressHE, sAddressStreat, contactPhone,email, webPage):
     nameOfCompanyForm = driver.find_element_by_id("application_fields.company.text")
     nameOfCompanyForm.clear()
     nameOfCompanyForm.send_keys(companyName)
@@ -186,7 +199,16 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
     emailForCompanyForm.clear()
     emailForCompanyForm.send_keys(email)
 
-    time.sleep(100)
+    webPageForm = driver.find_element_by_id("application_fields.seat.contacts.url")
+    webPageForm.clear()
+    webPageForm.send_keys(webPage)
+
+
+
+def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address):
+
+
+
 
 
 # TODO Do the rest of the Automation
@@ -198,4 +220,7 @@ buttonForNextPageForm = driver.find_element_by_xpath("//button[text()='Прод�
 
 time.sleep(5)
 
-registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail)
+registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail, page)
+
+registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address)
+
