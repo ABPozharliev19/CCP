@@ -55,8 +55,6 @@ correspondence_floor_address = 4
 correspondence_apartment_address = 5
 
 
-
-
 def logIn(email, password):  # First function to Log in
     driver.get(
         "https://login.registryagency.bg/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_mode"
@@ -162,6 +160,7 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
 
 
 def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAddressHE, sAddressStreat, contactPhone,email, webPage):
+
     nameOfCompanyForm = driver.find_element_by_id("application_fields.company.text")
     nameOfCompanyForm.clear()
     nameOfCompanyForm.send_keys(companyName)
@@ -206,8 +205,49 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
 
 
 def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address):
+    driver.execute_script("window.scrollTo(0, 900)")
+
+    correspondenceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.settlement")
+    correspondenceAddressForm.click()
+    correspondenceAddressForm.clear()
+    correspondenceAddressForm.send_keys(correspondence_address)
+    correspondenceAddressForm.click()
+    Form = WebDriverWait(driver, 20).until(EC.presence_of_element_located(
+        (By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[5]/div/div[1]/div[2]/div[1]/span/ul/li")))
+    Form.click()
 
 
+    correspondencePostCodeForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.postCode")
+    correspondencePostCodeForm.clear()
+    correspondencePostCodeForm.send_keys(correspondence_post_code)
+
+    correspondenceHousingEstateForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.housingEstate")
+    correspondenceHousingEstateForm.clear()
+    correspondenceHousingEstateForm.send_keys(correspondence_housing_estate)
+
+    correspondenceAddressStreetForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.street")
+    correspondenceAddressStreetForm.clear()
+    correspondenceAddressStreetForm.send_keys(correspondence_address_street)
+
+    correspondenceNumberStreetForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.streetNumber")
+    correspondenceNumberStreetForm.clear()
+    correspondenceNumberStreetForm.send_keys(correspondence_number_Street)
+
+    correspondenceBlockAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.block")
+    correspondenceBlockAddressForm.clear()
+    correspondenceBlockAddressForm.send_keys(correspondence_block_Address)
+
+    correspondenceEntranceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.entrance")
+    correspondenceEntranceAddressForm.clear()
+    correspondenceEntranceAddressForm.send_keys(correspondence_entrance_Address)
+
+    correspondenceFloorAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.floor")
+    correspondenceFloorAddressForm.clear()
+    correspondenceFloorAddressForm.send_keys(correspondence_floor_Address)
+
+    correspondenceApartmentAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.apartment")
+    correspondenceApartmentAddressForm.clear()
+    correspondenceApartmentAddressForm.send_keys(correspondence_apartment_Address)
 
 
 
