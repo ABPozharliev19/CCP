@@ -54,6 +54,9 @@ correspondence_entrance_address = 3
 correspondence_floor_address = 4
 correspondence_apartment_address = 5
 
+subjectOfActivity = "Ne znam :)"
+
+
 
 def logIn(email, password):  # First function to Log in
     driver.get(
@@ -204,7 +207,7 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
 
 
 
-def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address):
+def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity):
     driver.execute_script("window.scrollTo(0, 900)")
 
     correspondenceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.settlement")
@@ -249,6 +252,12 @@ def registerCompanyPage3(correspondence_address, correspondence_post_code, corre
     correspondenceApartmentAddressForm.clear()
     correspondenceApartmentAddressForm.send_keys(correspondence_apartment_Address)
 
+    subjectOfActivityForm = driver.find_element_by_id("application_fields.subjectOfActivity.text")
+    subjectOfActivityForm.clear()
+    subjectOfActivityForm.send_keys(subject_activity)
+
+
+
 
 
 # TODO Do the rest of the Automation
@@ -262,5 +271,5 @@ time.sleep(5)
 
 registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail, page)
 
-registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address)
+registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity)
 
