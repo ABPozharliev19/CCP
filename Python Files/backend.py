@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 import tokens
+from functions_backend import *
 
 driver = webdriver.Chrome(tokens.PATH)  # Setting up the webdriver
 
@@ -56,7 +57,11 @@ correspondence_apartment_address = 5
 
 subjectOfActivity = "Ne znam :)"
 
+activity = "01.1 "
 
+manager_name = "Гошо Пешов Гошов"
+manager_EGN = "0348011188"
+manager_country = "КОНГО"
 
 def logIn(email, password):  # First function to Log in
     driver.get(
@@ -90,9 +95,7 @@ def registerCompanyPage1(Name, EGN, birthPlace, cityOfBirth, countryOfLife, city
     driver.execute_script("window.scrollTo(0, 500)")
 
     # Search for the
-    nameForm = driver.find_element_by_id("application_applicants.applicantsList.[0].person.name")
-    nameForm.clear()
-    nameForm.send_keys(Name)
+    search_by_id(driver, "NameForm", "application_applicants.applicantsList.[0].person.name", Name )
 
     EGNForm = driver.find_element_by_id("application_applicants.applicantsList.[0].person.indent")
     EGNForm.clear()
@@ -207,7 +210,7 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
 
 
 
-def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity):
+def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity, Activity, m_name, m_egn, m_country):
     driver.execute_script("window.scrollTo(0, 900)")
 
     correspondenceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.settlement")
@@ -256,11 +259,34 @@ def registerCompanyPage3(correspondence_address, correspondence_post_code, corre
     subjectOfActivityForm.clear()
     subjectOfActivityForm.send_keys(subject_activity)
 
+    activityForm = driver.find_element_by_id("parentNkid")
+    activityForm.click()
+    activityForm.clear()
+    activityForm.send_keys(Activity)
+    activityForm.click()
+
+    Form = WebDriverWait(driver, 20).until(EC.presence_of_element_located(
+        (By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[7]/div[2]/div[1]/div[1]/div/span/ul/li")))
+    Form.click()     # TODO "Клас по НКИД"
+
+    managerNameForm = driver.find_element_by_id("application_fields.managers.managersList.[0].person.name")
+    managerNameForm.clear()
+    managerNameForm.send_keys(m_name)
+
+    managerEGNForm = driver.find_element_by_id("application_fields.managers.managersList.[0].person.indent")
+    managerEGNForm.clear()
+    managerEGNForm.send_keys(m_egn)
+
+    managerCountryForm = driver.find_element_by_id("application_fields.managers.managersList.[0].person.countryName")
+    managerCountryForm.clear()
+    managerCountryForm.send_keys(m_country)
+
+    Form = WebDriverWait(driver, 20).until(EC.presence_of_element_located(
+        (By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[8]/div[2]/div[1]/div/div[4]/div/span/ul/li")))
+    Form.click()
 
 
 
-
-# TODO Do the rest of the Automation
 logIn(emailForLogIn, passwordForLogIn)
 
 registerCompanyPage1(Name, EGN, placeOfBirth, cityOfBirth, country_live, city_live, neighborhood_live, street_live, postCode, number_street, block_address, entrance_address, floor_address, apartment_address)
@@ -271,5 +297,5 @@ time.sleep(5)
 
 registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail, page)
 
-registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity)
+registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity, activity, manager_name, manager_EGN, manager_country)
 
