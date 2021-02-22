@@ -63,6 +63,8 @@ manager_name = "Гошо Пешов Гошов"
 manager_EGN = "0348011188"
 manager_country = "КОНГО"
 
+text_for_representation = "Dunno"
+
 def logIn(email, password):  # First function to Log in
     driver.get(
         "https://login.registryagency.bg/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_mode"
@@ -210,7 +212,7 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
 
 
 
-def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity, Activity, m_name, m_egn, m_country):
+def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity, Activity, m_name, m_egn, m_country, representation_text):
     driver.execute_script("window.scrollTo(0, 900)")
 
     correspondenceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.settlement")
@@ -278,6 +280,7 @@ def registerCompanyPage3(correspondence_address, correspondence_post_code, corre
     managerEGNForm.send_keys(m_egn)
 
     managerCountryForm = driver.find_element_by_id("application_fields.managers.managersList.[0].person.countryName")
+    managerCountryForm.click()
     managerCountryForm.clear()
     managerCountryForm.send_keys(m_country)
 
@@ -285,7 +288,12 @@ def registerCompanyPage3(correspondence_address, correspondence_post_code, corre
         (By.XPATH, "/html/body/div[1]/div[2]/div[2]/div[3]/div/div[8]/div[2]/div[1]/div/div[4]/div/span/ul/li")))
     Form.click()
 
+    labelForWayOfProduction = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div/div[9]/div[2]/div[1]/div/div/div[3]/label")
+    labelForWayOfProduction.click()
 
+    fieldForRepresentation = driver.find_element_by_id("application_fields.wayOfRepresentation.text")
+    fieldForRepresentation.clear()
+    fieldForRepresentation.send_keys(representation_text)
 
 logIn(emailForLogIn, passwordForLogIn)
 
@@ -297,5 +305,5 @@ time.sleep(5)
 
 registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail, page)
 
-registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity, activity, manager_name, manager_EGN, manager_country)
+registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity, activity, manager_name, manager_EGN, manager_country, text_for_representation)
 
