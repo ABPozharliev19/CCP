@@ -65,6 +65,17 @@ manager_country = "КОНГО"
 
 text_for_representation = "Dunno"
 
+date_expiration = "22.05.2020"
+way_expiration = "Nqma takova"
+
+special_conditions = "Nqma takiva lek :D"
+
+capital_owner = "Гошо Пешов Гошов"
+capital_owner_dateBirth = "22.02.2020"
+
+funds_size = 2500
+deposited_funds = 2500
+
 def logIn(email, password):  # First function to Log in
     driver.get(
         "https://login.registryagency.bg/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_mode"
@@ -212,7 +223,7 @@ def registerCompanyPage2(companyName, translatedName, sAddress, sAPostCode, sAdd
 
 
 
-def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity, Activity, m_name, m_egn, m_country, representation_text):
+def registerCompanyPage3(correspondence_address, correspondence_post_code, correspondence_housing_estate, correspondence_address_street, correspondence_number_Street, correspondence_block_Address, correspondence_entrance_Address, correspondence_floor_Address, correspondence_apartment_Address, subject_activity, Activity, m_name, m_egn, m_country, representation_text, expiration_date, expiration_way, conditions, cap_owner, cap_owner_birth):
     driver.execute_script("window.scrollTo(0, 900)")
 
     correspondenceAddressForm = driver.find_element_by_id("application_fields.seatForCorrespondence.address.settlement")
@@ -295,6 +306,29 @@ def registerCompanyPage3(correspondence_address, correspondence_post_code, corre
     fieldForRepresentation.clear()
     fieldForRepresentation.send_keys(representation_text)
 
+    calendarForm = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div[3]/div/div[10]/div[2]/div[1]/div[1]/div/div/div[1]/input")
+    calendarForm.clear()
+    calendarForm.send_keys(expiration_date)
+
+    wayExpirationForm = driver.find_element_by_id("application_fields.termsOfPartnership.termType")
+    wayExpirationForm.clear()
+    wayExpirationForm.send_keys(expiration_way)
+
+    conditionsForm = driver.find_element_by_id("application_fields.specialConditions.text")
+    conditionsForm.clear()
+    conditionsForm.send_keys(conditions)
+
+    search_by_id(driver, "capitalOwnerForm", "application_fields.soleCapitalOwner.subject.name", cap_owner)
+    search_by_id(driver, "capitalOwnerBirthForm", "application_fields.soleCapitalOwner.subject.indent", cap_owner_birth)
+
+    """
+    if country.lower() != 'българия':
+        search_by_id(driver, "checkboxForm", "application_fields.soleCapitalOwner.subject.isForeignTrader").click()
+    """
+
+    # TODO "Непарична вноска"
+
+
 logIn(emailForLogIn, passwordForLogIn)
 
 registerCompanyPage1(Name, EGN, placeOfBirth, cityOfBirth, country_live, city_live, neighborhood_live, street_live, postCode, number_street, block_address, entrance_address, floor_address, apartment_address)
@@ -305,5 +339,5 @@ time.sleep(5)
 
 registerCompanyPage2(companyName, translatedCompanyName, sAddress, seatAddressPostCode, seatAddressHousingEstate, seatAddressStreet, contact_phone, eMail, page)
 
-registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity, activity, manager_name, manager_EGN, manager_country, text_for_representation)
+registerCompanyPage3(correspondenceAddress, correspondencePostCode, correspondenceHousingEstate, correspondenceAddressStreet, correspondence_number_street, correspondence_block_address, correspondence_entrance_address, correspondence_floor_address, correspondence_apartment_address, subjectOfActivity, activity, manager_name, manager_EGN, manager_country, text_for_representation, date_expiration, way_expiration, special_conditions, capital_owner, capital_owner_dateBirth)
 
