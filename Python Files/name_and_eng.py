@@ -2,6 +2,10 @@ import PySimpleGUI as sg
 import place_of_birth as secondPage
 
 
+name = ""
+egn = ""
+
+
 def main():
     layout = [
         [sg.Text('Въведете трите си имена ', justification='center')],
@@ -12,11 +16,12 @@ def main():
     ]
     first_window = sg.Window('Начален прозорец', layout, font="Helvetica 12", icon="../Logo.ico")
 
-    temp, name_and_egn = first_window.read()
+    event, name_and_egn = first_window.read()
 
-    if temp != 'Напред':
+
+
+    if event != 'Напред':
         first_window.close()
-        print(temp, name_and_egn)
 
     else:
         first_window.close()
@@ -25,4 +30,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

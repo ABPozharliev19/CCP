@@ -32,7 +32,6 @@ def main():
     # If the window is closed by the "X" button
     if temp is None:
         thirdWindow.close()
-        print(temp, place_of_life)
 
     # If the button "Назад" is pressed
     elif temp == 'Назад':

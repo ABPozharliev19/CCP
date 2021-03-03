@@ -29,14 +29,15 @@ def main():
         ask_window.close()
         activity_window = sg.Window('Основна дейност по НКИД', activity_layout, font="Helvetica 12" , element_justification='center', icon="../Logo.ico")
         event, values = activity_window.read()
+        print(values)
         if event == 'Напред':
+            activity_window.close()
             next_page.main()
         elif event is None:
             activity_window.close()
         else:
             activity_window.close()
             previous_page.main()
-
 
 
 if __name__ == "__main__":

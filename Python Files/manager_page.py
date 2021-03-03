@@ -23,6 +23,7 @@ def main():
     elif events is None:
         window.close()
     else:
+        window.close()
         next_page.main()
 
 
