@@ -1,6 +1,9 @@
 import PySimpleGUI as sg
+import company_info as previous_page
+
 
 def main():
+    ####### WINDOW LAYOUT STARTS HERE #######
     layout = [
         [sg.Text('Държава', size=(45, 1), justification='center')],
         [sg.Input(size=(22, 1))],
@@ -14,19 +17,30 @@ def main():
          sg.Text('Ет.', pad=(30, 1)), sg.Text('Ап.', pad=(30, 1))],
         [sg.Input(size=(8, 1)), sg.Input(size=(8, 1)), sg.Input(size=(9, 1)), sg.Input(size=(8, 1)),
          sg.Input(size=(8, 1))],
-        [sg.Text('Телефон')],
-        [sg.Input()],
-        [sg.Text('Факс')],
-        [sg.Input()],
-        [sg.Text('Адрес на електронна поща')],
-        [sg.Input()],
-        [sg.Text('Интернет страница')],
-        [sg.Input()],
         [sg.Button('Назад'), sg.Button('Напред')]
     ]
 
-    window = sg.Window('Информация за компанията', layout,  element_justification="center", font="Helvetica 12", icon="../Logo.ico")
-    event, values = window.read()
+    #### WINDOW LAYOUT ENDS HERE ####
+
+    # Define the window
+    Window = sg.Window('Адрес за кореспонденция с НАП на територията на страната', layout, font="Helvetica 12" , element_justification='center', icon="../Logo.ico")
+
+    # Make the window show and read every information in it
+    events, place_of_life = Window.read()
+
+    # If the window is closed by the "X" button
+    if events is None:
+        Window.close()
+
+    # If the button "Назад" is pressed
+    elif events == 'Назад':
+        Window.close()
+        previous_page.main()
+
+    # The button "Напред" is pressed
+    else:
+        Window.close()
+        # fourthPage.main()
 
 
 if __name__ == "__main__":
