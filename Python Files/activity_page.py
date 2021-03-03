@@ -1,33 +1,42 @@
 import PySimpleGUI as sg
-import company_correspondece_address as previous_page
+import manager_page as next_page
+import list_of_companies
+import subject_activity_page as previous_page
+
 
 def main():
     layout = [
-        [sg.Text('Въвдете предмета на дейност:',justification='center')],
-        [sg.Multiline(pad=(2, 2), size=(45,5))],
-        [sg.Button('Назад', size=(10,1),  pad=(2,2)), sg.Button('Напред',size=(10,1),  pad=(2,2))]]
-
-    layout_message = [
-        [sg.Text('В следващото поле напишете предмета на дейност на новата ви фирма.')],
-        [ sg.Button('Напред')]
+        [sg.Text('Искате ли да въведете дейност по НКИД?')],
+        [sg.Button('Не, не искам.'), sg.Button('Да, искам.')]
     ]
 
-    message_window = sg.Window("Поле за въвеждане",layout_message,  font="Helvetica 12", icon="../Logo.ico")
+    activity_layout = [
+        [sg.Text('Група по НКИД')],
+        [sg.Combo(list_of_companies.my_list, size=(44,10))],
+        [sg.Text('Клас по НКИД')],
+        [sg.Input()],
+        [sg.Button('Назад'), sg.Button('Напред')]
+    ]
 
-    window = sg.Window('Предмет на дейност', layout, font="Helvetica 12", icon="../Logo.ico", element_justification="center")
+    ask_window = sg.Window('Основна дейност по НКИД', layout, font="Helvetica 12" , element_justification='center', icon="../Logo.ico" )
+    event, values = ask_window.read()
 
-    event, values = message_window.read()
+    if event == 'Не, не искам.':
+        ask_window.close()
+        next_page.main()
 
-    if event == 'Напред':
-        message_window.close()
-        event, values = window.read()
-        if event is None:
-            window.close()
-        elif event == 'Напред':
-            pass
+    elif event == 'Да, искам.':
+        ask_window.close()
+        activity_window = sg.Window('Основна дейност по НКИД', activity_layout, font="Helvetica 12" , element_justification='center', icon="../Logo.ico")
+        event, values = activity_window.read()
+        if event == 'Напред':
+            next_page.main()
+        elif event is None:
+            activity_window.close()
         else:
-            window.close()
+            activity_window.close()
             previous_page.main()
+
 
 
 if __name__ == "__main__":
