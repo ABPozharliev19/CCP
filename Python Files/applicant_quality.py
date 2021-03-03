@@ -20,7 +20,6 @@ def main():
     # If the window is closed by the "X" button
     if temp is None:
         fourthWindow.close()
-        print(temp, applicant_quality)
 
     # If the button "Назад" is pressed
     elif temp == 'Назад':
